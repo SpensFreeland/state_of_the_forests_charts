@@ -6,10 +6,58 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+<style>
+
+.custom-legend {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 16px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  color: #666;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+}
+
+.legend-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ED7D31;
+  margin-right: 8px;
+}
+
+.legend-bar {
+  width: 40px;
+  height: 20px;
+  background: #3775C8;
+  margin-right: 8px;
+}
+
+
+</style>
 
 <body>
 
 <canvas id="myChart"></canvas>
+
+<div class="custom-legend">
+
+  <div class="legend-item">
+    <span class="legend-circle"></span>
+    <span>SPF 2x4 price (US$/mbf)</span>
+  </div>
+  
+  <div class="legend-item">
+    <span class="legend-bar"></span>
+    <span>U.S. housing starts (000s)</span>
+  </div>
+
+</div>
 
 <script>
 
@@ -74,42 +122,8 @@ new Chart(document.getElementById('myChart'), {
       },
 
       legend: {
-        position: 'bottom',
-      
-        labels: {
-          font: {
-            size: 16
-          },
-      
-          usePointStyle: true,
-      
-          pointStyleWidth: 20,
-      
-          generateLabels(chart) {
-      
-            const labels =
-              Chart.defaults.plugins.legend.labels.generateLabels(chart);
-      
-            labels.forEach(label => {
-      
-              const dataset =
-                chart.data.datasets[label.datasetIndex];
-      
-              if (dataset.type === 'bar') {
-                label.pointStyle = 'rect';
-              }
-      
-              if (dataset.type === 'line') {
-                label.pointStyle = 'circle';
-              }
-      
-            });
-      
-            return labels;
-          }
-        }
+        display: false
       }
-
     },
 
     scales: {
