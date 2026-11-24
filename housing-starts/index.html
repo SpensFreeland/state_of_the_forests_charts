@@ -77,20 +77,21 @@
 
   <script>
 
-    const years = [
-      2016, 2017, 2018, 2019, 2020,
-      2021, 2022, 2023, 2024, 2025
-    ];
+  fetch('../data/housing-starts.json')
+    .then(response => response.json())
+    .then(data => {
+  
+      const years =
+        data.map(d => d.YEAR);
+  
+      const housingStarts =
+        data.map(d => d.US_HOUSING_STARTS);
+  
+      const spfPrice =
+        data.map(d => d.SPF_2X4_PRICE);
+  
+      new Chart(document.getElementById('myChart'), {
 
-    const housingStarts = [
-      1173.8, 1203.0, 1249.9, 1290.0, 1379.6,
-      1601.0, 1552.6, 1420.0, 1367.0, 1356.0
-    ];
-
-    const spfPrice = [
-      307.50, 409.39, 499.75, 371.56, 566.92,
-      880.74, 813.80, 397.68, 412.27, 466.66
-    ];
 
     new Chart(document.getElementById('myChart'), {
 
@@ -200,6 +201,7 @@
       }
 
     });
+  });
 
   </script>
 
