@@ -9,108 +9,166 @@
 
 <body>
 
-  <canvas id="myChart"></canvas>
+<canvas id="myChart"></canvas>
 
-  <script>
-    const years = [
-      2016, 2017, 2018, 2019, 2020,
-      2021, 2022, 2023, 2024, 2025
-    ];
+<script>
 
-    const housingStarts = [
-      1173.8, 1203.0, 1249.9, 1290.0, 1379.6,
-      1601.0, 1552.6, 1420.0, 1367.0, 1356.0
-    ];
+const years = [
+  2016, 2017, 2018, 2019, 2020,
+  2021, 2022, 2023, 2024, 2025
+];
 
-    const spfPrice = [
-      307.50, 409.39, 499.75, 371.56, 566.92,
-      880.74, 813.80, 397.68, 412.27, 466.66
-    ];
+const housingStarts = [
+  1173.8, 1203.0, 1249.9, 1290.0, 1379.6,
+  1601.0, 1552.6, 1420.0, 1367.0, 1356.0
+];
 
-    new Chart(document.getElementById('myChart'), {
-      data: {
-        labels: years,
-        datasets: [
-  {
-    type: 'bar',
-    label: 'U.S. housing starts (000s)',
-    data: housingStarts,
-    backgroundColor: '#3775C8',
-    yAxisID: 'housing',
-    order: 2
+const spfPrice = [
+  307.50, 409.39, 499.75, 371.56, 566.92,
+  880.74, 813.80, 397.68, 412.27, 466.66
+];
+
+new Chart(document.getElementById('myChart'), {
+
+  data: {
+    labels: years,
+
+    datasets: [
+      {
+        type: 'bar',
+        label: 'U.S. housing starts (000s)',
+        data: housingStarts,
+        backgroundColor: '#3775C8',
+        yAxisID: 'housing',
+        order: 2
+      },
+      {
+        type: 'line',
+        label: 'SPF 2x4 price (US$/mbf)',
+        data: spfPrice,
+        borderColor: '#ED7D31',
+        backgroundColor: '#ED7D31',
+        borderWidth: 4,
+        pointRadius: 6,
+        pointHoverRadius: 6,
+        tension: 0,
+        yAxisID: 'price',
+        order: 1
+      }
+    ]
   },
-  {
-    type: 'line',
-    label: 'SPF 2x4 price (US$/mbf)',
-    data: spfPrice,
-    borderColor: '#ED7D31',
-    backgroundColor: '#ED7D31',
-    yAxisID: 'price',
-    pointRadius: 5,
-    pointHoverRadius: 5,
-    borderWidth: 5, 
-    order: 1
-  }
-]
+
+  options: {
+
+    responsive: true,
+
+    plugins: {
+
+      title: {
+        display: true,
+        text: 'U.S. housing starts and the SPF 2x4 lumber price',
+        font: {
+          size: 24,
+          weight: 'bold'
+        }
       },
 
-options: {
-
-  responsive: true,
-
-  plugins: {
-
-    title: {
-      display: true,
-      text: 'U.S. housing starts and the SPF 2x4 lumber price',
-      font: {
-        size: 20,
-        weight: 'bold'
-      }
-    },
-
-    legend: {
-      position: 'bottom',
-
-      labels: {
-        usePointStyle: true,
-        pointStyle: 'circle',
-        font: {
-          size: 16
+      legend: {
+        position: 'bottom',
+      
+        labels: {
+          font: {
+            size: 16
+          },
+      
+          usePointStyle: true,
+      
+          generateLabels(chart) {
+      
+            const labels =
+              Chart.defaults.plugins.legend.labels.generateLabels(chart);
+      
+            labels.forEach(label => {
+      
+              const dataset =
+                chart.data.datasets[label.datasetIndex];
+      
+              if (dataset.type === 'bar') {
+                label.pointStyle = 'rect';
+              }
+      
+              if (dataset.type === 'line') {
+                label.pointStyle = 'circle';
+              }
+      
+            });
+      
+            return labels;
+          }
         }
       }
-    }
-  },
 
-  scales: {
-
-    housing: {
-      type: 'linear',
-      position: 'left',
-
-      title: {
-        display: true,
-        text: 'housing starts (000s)'
-      }
     },
 
-    price: {
-      type: 'linear',
-      position: 'right',
+    scales: {
 
-      title: {
-        display: true,
-        text: 'US$ per mbf'
+      x: {
+        ticks: {
+          font: {
+            size: 14
+          }
+        }
       },
 
-      grid: {
-        drawOnChartArea: false
+      housing: {
+        type: 'linear',
+        position: 'left',
+
+        title: {
+          display: true,
+          text: 'housing starts (000s)',
+          font: {
+            size: 16
+          }
+        },
+
+        ticks: {
+          font: {
+            size: 14
+          }
+        }
+      },
+
+      price: {
+        type: 'linear',
+        position: 'right',
+
+        title: {
+          display: true,
+          text: 'US$ per mbf',
+          font: {
+            size: 16
+          }
+        },
+
+        ticks: {
+          font: {
+            size: 14
+          }
+        },
+
+        grid: {
+          drawOnChartArea: false
+        }
       }
+
     }
+
   }
-}
-    });
-  </script>
+
+});
+
+</script>
 
 </body>
 </html>
