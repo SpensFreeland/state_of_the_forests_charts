@@ -1,0 +1,52 @@
+[
+  {
+    "YEAR": 2016,
+    "US_HOUSING_STARTS": 1173.8,
+    "SPF_2X4_PRICE": 307.5
+  },
+  {
+    "YEAR": 2017,
+    "US_HOUSING_STARTS": 1203.0,
+    "SPF_2X4_PRICE": 409.39
+  },
+  {
+    "YEAR": 2018,
+    "US_HOUSING_STARTS": 1249.9,
+    "SPF_2X4_PRICE": 499.75
+  },
+  {
+    "YEAR": 2019,
+    "US_HOUSING_STARTS": 1290.0,
+    "SPF_2X4_PRICE": 371.56
+  },
+  {
+    "YEAR": 2020,
+    "US_HOUSING_STARTS": 1379.6,
+    "SPF_2X4_PRICE": 566.92
+  },
+  {
+    "YEAR": 2021,
+    "US_HOUSING_STARTS": 1601.0,
+    "SPF_2X4_PRICE": 880.74
+  },
+  {
+    "YEAR": 2022,
+    "US_HOUSING_STARTS": 1552.6,
+    "SPF_2X4_PRICE": 813.80
+  },
+  {
+    "YEAR": 2023,
+    "US_HOUSING_STARTS": 1420.0,
+    "SPF_2X4_PRICE": 397.68
+  },
+  {
+    "YEAR": 2024,
+    "US_HOUSING_STARTS": 1367.0,
+    "SPF_2X4_PRICE": 412.27
+  },
+  {
+    "YEAR": 2025,
+    "US_HOUSING_STARTS": 1356.0,
+    "SPF_2X4_PRICE": 466.66
+  }
+]
